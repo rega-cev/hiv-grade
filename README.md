@@ -40,9 +40,9 @@ If you would like to use less or more algorithms (more is obviously dependent on
 ```
 to suit your needs
 
-If everything goes well, you should now end up with x JSON files which we'll all merge to one big JSON file. This can be done by for example calling
+If everything goes well, you should now end up with x JSON files which we'll combine to a csv file with our java class JSONParser.java
+Before we use this file, make sure that you replace the locations in the Java class with the correct paths
 ```
-cat *.json > file_All_JSON
+javac JSONParser.java
+java JSONParser.java
 ```
-
-Finally there is JAVA code available to transform the JSON file into a CSV file (depending on our needs).
