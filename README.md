@@ -27,7 +27,13 @@ perl fasta_split.pl --input_file sequences.fasta --output_dir output/ --seqs_per
 
 This will create x new fasta files in the output folder which each fasta containing 50 sequences.
 
-Next we'll call the hiv-grade analysis script
+Before we can call the hiv-grade analysis script, we need to install Forkmanager because we want to run all the processes in parallel.
+This can be done as follows:
+```
+cpan Parallel::ForkManager
+```
+You'll have to replace the variable $MAX_PROCESSES variable in loop_files.pl (line 7) to the amount of maximum processes you want to run at the same time. Basically, how many concurrent requests can be made to the hiv-grade website (e.g. 4).
+Next we'll call the script.
 ```
 perl loop_files.pl
 ```
