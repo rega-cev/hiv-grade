@@ -59,5 +59,7 @@ javac -cp json-20160810.jar:. JSONParser.java
 java -cp json-20160810.jar:. JSONParser
 ```
 
-Change   "String inputfile = "/Users/ewout/Documents/Kristof/script/output/file_All_JSON";"
+Change 
+File dir = new File("/Users/ewout/Documents/Kristof/script/output");
+String basePath = "/Users/ewout/Documents/Kristof/script/output/";
  in JSONParser.java as well to the correct folder, and recompile. 
