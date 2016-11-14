@@ -58,3 +58,6 @@ Before we use this file, make sure that you replace the locations in the Java cl
 javac -cp json-20160810.jar:. JSONParser.java
 java -cp json-20160810.jar:. JSONParser
 ```
+
+Change   "String inputfile = "/Users/ewout/Documents/Kristof/script/output/file_All_JSON";"
+ in JSONParser.java as well to the correct folder, and recompile. 
