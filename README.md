@@ -55,6 +55,6 @@ to suit your needs
 If everything goes well, you should now end up with x JSON files which we'll combine to a csv file with our java class JSONParser.java
 Before we use this file, make sure that you replace the locations in the Java class with the correct paths
 ```
-javac JSONParser.java
-java JSONParser.java
+javac -cp json-20160810.jar:. JSONParser.java
+java -cp json-20160810.jar:. JSONParser
 ```
