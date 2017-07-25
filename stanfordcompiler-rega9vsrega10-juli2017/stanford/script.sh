@@ -488,6 +488,9 @@ for file in *treat-*; do jot -r "$(wc -l $file)" 1 | paste - $file | sort -n | c
 for file in *none-*; do jot -r "$(wc -l $file)" 1 | paste - $file | sort -n | cut -f 2- | head -n 100  > "shuf.${file}" ; done
 
 
+#make fasta
+for shuffie in shuf*; do gsed 's/^/>/g' $shuffie | gsed 's/,/\n/g' > "${shuffie}.fasta"; done 
+
 
 
 
