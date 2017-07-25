@@ -484,8 +484,8 @@ shuf -n 50 rt-treat-IR.csv  | wc
 
 
 # mac 
-for file in *treat-*; do jot -r "$(wc -l $file)" 1 | paste - $file | sort -n | cut -f 2- | head -n 100  > "shuf.${file}" ; done
-for file in *none-*; do jot -r "$(wc -l $file)" 1 | paste - $file | sort -n | cut -f 2- | head -n 100  > "shuf.${file}" ; done
+for file in *treat-*; do jot -r "$(wc -l $file)" 1 | paste - $file | sort -n | cut -f 2- | head -n 1000  > "shuf.${file}" ; done
+for file in *none-*; do jot -r "$(wc -l $file)" 1 | paste - $file | sort -n | cut -f 2- | head -n 1000  > "shuf.${file}" ; done
 
 
 #make fasta
