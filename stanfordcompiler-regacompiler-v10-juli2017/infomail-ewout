@@ -1,0 +1,27 @@
+Hey,
+
+I've finished a first analysis of v10 of our algorithm.
+The test was done using our compiler vs the Stanford compiler.
+
+In attachment, you can find a tar file which contains the following files:
+The following three fasta files contain the sequences that were different in result between Rega and Stanford compiler
+IN-problematic.fasta
+PR-problematic.fasta
+RT-problematic.fasta
+The following three html files show the differences between the problematic sequences
+IN.v1000.diff.html
+PR.v1000.diff.html
+RT.v1000.diff.html
+The following three text files contain the id's of the sequences that were considered problematic
+sequenceids.IN.txt
+sequenceids.PR.txt
+sequenceids.RT.txt
+
+I'll give a short summary:
+IN: 1 sequence was different between the two compilers (out of 11763 sequences)
+PR: 1332 sequences were different between the two compilers (out of 103706 sequences)
+RT: 171 sequences were different between the two compilers (out of 111184 sequences)
+
+I think the next step will be to figure out why those sequences are different and list those remarks in a document
+
+Ewout
