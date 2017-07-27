@@ -310,41 +310,39 @@ table(e$SIR,e$RTIList!='None')
 
 
 #unique(e$SIR) #[1] "SI" "IR" "SR" "IS"
-f<-e[e$RTIList=='None' & e$SIR==unique(e$SIR)[1],]
+f<-e[e$RTIList=='None' & e$SIR==unique(e$SIR)[1],]; table(f$SIR)
 write.table(file='rt-none-SI.csv',paste(paste(f$id,f$SIR,sep='-'),f$seq),sep=',', quote=F, row.names=F)
 
-f<-e[e$RTIList=='None' & e$SIR==unique(e$SIR)[2],]
+f<-e[e$RTIList=='None' & e$SIR==unique(e$SIR)[2],]; table(f$SIR)
 write.table(file='rt-none-IR.csv',paste(paste(f$id,f$SIR,sep='-'),f$seq),sep=',', quote=F, row.names=F)
 
-f<-e[e$RTIList=='None' & e$SIR==unique(e$SIR)[3],]
-write.table(file='rt-none-SR.csv',paste(paste(f$id,f$SIR,sep='-'),f$seq),sep=',', quote=F, row.names=F)
-
-f<-e[e$RTIList=='None' & e$SIR==unique(e$SIR)[4],]
+f<-e[e$RTIList=='None' & e$SIR==unique(e$SIR)[3],]; table(f$SIR)
 write.table(file='rt-none-IS.csv',paste(paste(f$id,f$SIR,sep='-'),f$seq),sep=',', quote=F, row.names=F)
 
+f<-e[e$RTIList=='None' & e$SIR==unique(e$SIR)[4],]; table(f$SIR)
+write.table(file='rt-none-SR.csv',paste(paste(f$id,f$SIR,sep='-'),f$seq),sep=',', quote=F, row.names=F)
 
-g<-e[e$RTIList!='None' & e$SIR==unique(e$SIR)[1],]
+
+g<-e[e$RTIList!='None' & e$SIR==unique(e$SIR)[1],]; table(g$SIR)
 nrow(g)
 write.table(file='rt-treat-SI.csv',paste(paste(g$id,g$SIR,sep='-'),g$seq),sep=',', quote=F, row.names=F)
 
-g<-e[e$RTIList!='None' & e$SIR==unique(e$SIR)[2],]
+g<-e[e$RTIList!='None' & e$SIR==unique(e$SIR)[2],]; table(g$SIR)
 nrow(g)
-
 write.table(file='rt-treat-IR.csv',paste(paste(g$id,g$SIR,sep='-'),g$seq),sep=',', quote=F, row.names=F)
 
-g<-e[e$RTIList!='None' & e$SIR==unique(e$SIR)[3],]
+g<-e[e$RTIList!='None' & e$SIR==unique(e$SIR)[3],];table(g$SIR)
 nrow(g)
-
-write.table(file='rt-treat-SR.csv',paste(paste(g$id,g$SIR,sep='-'),g$seq),sep=',', quote=F, row.names=F)
-
-g<-e[e$RTIList!='None' & e$SIR==unique(e$SIR)[4],]
-nrow(g)
-
 write.table(file='rt-treat-IS.csv',paste(paste(g$id,g$SIR,sep='-'),g$seq),sep=',', quote=F, row.names=F)
+
+g<-e[e$RTIList!='None' & e$SIR==unique(e$SIR)[4],]; table(g$SIR)
+nrow(g)
+write.table(file='rt-treat-SR.csv',paste(paste(g$id,g$SIR,sep='-'),g$seq),sep=',', quote=F, row.names=F)
 
 
 
 write.table(c,file='rtmismatch-treat.csv',sep=',', quote=F, row.names=F)
+
 
 
 
@@ -405,17 +403,10 @@ write.table(file='in-treat-IR.csv',paste(paste(g$id,g$SIR,sep='-'),g$seq),sep=',
 g<-e[e$INIList!='None' & e$SIR==unique(e$SIR)[6],]
 write.table(file='in-treat-SR.csv',paste(paste(g$id,g$SIR,sep='-'),g$seq),sep=',', quote=F, row.names=F)
 
-
-
-
-
-
-
-
 write.table(c,file='inmismatch-treat.csv',sep=',', quote=F, row.names=F)
 
 
- wc *none*
+wc *none*
 wc *treat* | grep -v 'match'
 
 
@@ -464,34 +455,27 @@ ktheys0@caipirinha:~/stanford$ wc *treat* | grep -v 'match'
    for i in in-*csv; do echo $i ;  grep NA-NA $i >> wegin ; done
    
 
-
 for file in *treat-*; do grep -v 'x' $file  | tr ' ' ',' > tet ; mv tet $file; done 
 for file in *none-*; do grep -v 'x' $file  | tr ' ' ',' > tet ; mv tet $file; done 
 
 
-## upload to stanford gui
-
-/home/ktheys0/stanford
-
+## upload to stanford gui /home/ktheys0/stanford
 
 rm in-none-RI.csv   # only ix as id 
-
 #linux 
-shuf -n 50 rt-treat-IR.csv  | wc
 
 
 
 
 
 # mac 
+rm shuf*
 for file in *treat-*; do jot -r "$(wc -l $file)" 1 | paste - $file | sort -n | cut -f 2- | head -n 1000  > "shuf.${file}" ; done
 for file in *none-*; do jot -r "$(wc -l $file)" 1 | paste - $file | sort -n | cut -f 2- | head -n 1000  > "shuf.${file}" ; done
 
 
 #make fasta
 for shuffie in shuf*; do gsed 's/^/>/g' $shuffie | gsed 's/,/\n/g' > "${shuffie}.fasta"; done 
-
-
 
 
 
